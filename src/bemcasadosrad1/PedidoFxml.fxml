@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="bemcasadosrad1.PedidoController" 
+    xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="30" vgap="30">
+    
+    
+    <Label text="ID:" GridPane.rowIndex="0"  GridPane.columnIndex="0"    /> 
+    <Label text="Pedido: " GridPane.rowIndex="1" GridPane.columnIndex="0"   />
+    
+
+</GridPane>
