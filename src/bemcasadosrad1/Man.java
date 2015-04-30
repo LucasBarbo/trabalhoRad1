@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Diosefer
  */
-public class Alterarnome extends Application {
+public class Man extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
