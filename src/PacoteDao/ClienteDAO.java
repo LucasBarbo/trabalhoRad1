@@ -25,10 +25,14 @@ public class ClienteDAO {
             preparador.setString(2, cliente.getNome());
             preparador.setString(3, cliente.getTelefone());
             preparador.setString(4, cliente.getEmail());
+
+        // as linhas abaixo iniciam e fecham o preparedStatament
+            preparador.execute();
+            preparador.close();
+
         } catch (SQLException ex) {
-            throw new SQLException();
+            ex.printStackTrace();
         }
-        
 
     }
 }
