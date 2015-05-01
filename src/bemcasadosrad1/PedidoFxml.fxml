@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:controller="bemcasadosrad1.PedidoController" 
-    xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="30" vgap="30">
-    
-    
-    <Label text="ID:" GridPane.rowIndex="0"  GridPane.columnIndex="0"    /> 
-    <Label text="Pedido: " GridPane.rowIndex="1" GridPane.columnIndex="0"   />
-    
-
-</GridPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="12.0" layoutY="63.0" text="Local Contratado" />
+      <DatePicker layoutX="109.0" layoutY="105.0" prefHeight="17.0" prefWidth="149.0" />
+      <ChoiceBox layoutX="109.0" layoutY="156.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="14.0" layoutY="156.0" text="Cliente: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="localPedioF" layoutX="109.0" layoutY="59.0" />
+      <Label layoutX="13.0" layoutY="109.0" text="Data Pedido" />
+      <Separator layoutX="189.0" layoutY="204.0" orientation="VERTICAL" prefHeight="145.0" prefWidth="2.0" />
+      <Separator layoutY="203.0" prefHeight="3.0" prefWidth="187.0" />
+      <Label layoutX="8.0" layoutY="217.0" text="Cerimonial: " />
+      <Label layoutX="7.0" layoutY="255.0" text="Data Evento: " />
+      <Label layoutX="16.0" layoutY="289.0" text="Tipo: " />
+      <TextField layoutX="79.0" layoutY="213.0" prefHeight="17.0" prefWidth="100.0" />
+      <DatePicker layoutX="79.0" layoutY="251.0" prefHeight="11.0" prefWidth="100.0" />
+      <ComboBox layoutX="79.0" layoutY="289.0" prefHeight="17.0" prefWidth="100.0" />
+      <Label layoutX="17.0" layoutY="324.0" text="Horario: " />
+      <TextField layoutX="79.0" layoutY="320.0" prefHeight="17.0" prefWidth="100.0" />
+      <Separator layoutX="27.0" layoutY="348.0" prefHeight="3.0" prefWidth="165.0" />
+      <Label layoutX="258.0" text="Pedido">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Separator layoutX="4.0" layoutY="39.0" prefHeight="3.0" prefWidth="643.0" />
+   </children>
+</AnchorPane>
