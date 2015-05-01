@@ -6,6 +6,8 @@ package Services;
  * @author Wil
  */
 
+import PacoteClasses.Cliente;
+import PacoteDAO.ClienteDAO;
 import java.util.List;
 
 class ClienteService {
@@ -31,16 +33,16 @@ class ClienteService {
         clienteDAO.salvar(cliente);
     }
 
-      public Cliente buscarPorId(Integer id) {
-        return clienteDAO.buscarPorId(id);
-    }
+     // public Cliente buscarPorId(Integer id) {
+       // return clienteDAO.buscarPorId(id);
+    //}
 
-    public void excluir(Integer id) {
-        clienteDAO.excluir(id);
-    }
+//    public void excluir(Integer id) {
+//        clienteDAO.excluir(id);
+//    }
 
-     public List<Cliente> buscarTodos() {
-        return clienteDAO.buscarTodos();
-    }
+//     public List<Cliente> buscarTodos() {
+//        return clienteDAO.buscarTodos();
+//    }
 }
 

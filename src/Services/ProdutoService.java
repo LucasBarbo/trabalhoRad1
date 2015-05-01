@@ -6,7 +6,7 @@ import java.util.List;
  *
  * @author Wil
  */
-public class ProdutoService {
+/*public class ProdutoService {
 
     class ClienteService {
 
@@ -41,3 +41,4 @@ public class ProdutoService {
     }
 
 }
+*/
