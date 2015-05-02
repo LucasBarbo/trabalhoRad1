@@ -8,7 +8,7 @@ import java.util.List;
  */
 /*public class ProdutoService {
 
-    class ClienteService {
+    
 
         private ProdutoDAO produtoDAO;
 
@@ -47,7 +47,7 @@ import java.util.List;
         public List<Produto> buscarTodos() {
             return produtoDAO.buscarTodos();
         }
-    }
+    }*/
 
-}
-*/
+
+
