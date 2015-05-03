@@ -7,7 +7,7 @@ public class testeDAO {
 
     public static void main(String[] args) {
      
-       testSalvar();
+        testSalvar();
     }
     private static void testSalvar() {
         Cliente cli = new Cliente();
