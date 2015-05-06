@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -19,7 +21,11 @@ import javafx.scene.control.Label;
 public class PedidoController implements Initializable {
     
     @FXML
-    private Label label;
+    private TextField localContratadoT, cerimonialT, horarioT;
+    
+    @FXML
+    private DatePicker dataPeidoT, dataEventoT;
+           
     
     @FXML
     private void btnPedido(ActionEvent event) {
