@@ -62,7 +62,7 @@ import java.util.List;
     public void excluir(Integer id) {
         pedidoDAO.excluir(id);
     }
-
+//metodo que 
     public List<Pedido> buscarTodos() {
         return pedidoDAO.buscarTodos();
     }
