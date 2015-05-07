@@ -37,8 +37,8 @@ class ClienteService {
         return clienteDAO.buscarPorId(id);
     }
 
-    public void excluir(Integer id) {
-       clienteDAO.excluir(id);
+    public void excluir(Cliente cliente) {
+       clienteDAO.excluir(cliente);
     }
 
      public List<Cliente> buscarTodos() {
