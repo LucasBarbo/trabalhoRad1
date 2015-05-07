@@ -36,6 +36,17 @@ public class TelaInicioController implements Initializable {
         stage.show();
     }
     
+    @FXML
+    public void btnCliente(ActionEvent event) throws IOException {
+       Parent root = FXMLLoader.load(getClass().getResource("Cliente.fxml"));
+        
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
