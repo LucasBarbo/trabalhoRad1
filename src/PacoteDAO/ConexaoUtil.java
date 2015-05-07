@@ -11,7 +11,7 @@ public class ConexaoUtil {
         Connection con = null;
 
         try {
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bemcasadosrad1", "postgres", "postgres");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bemcasadosrad1", "postgres", "admim");
             System.out.println("Conectado com sucesso");
         } catch (SQLException e) {
 
