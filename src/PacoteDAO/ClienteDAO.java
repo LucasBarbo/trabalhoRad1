@@ -12,24 +12,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ClienteDAO {
+
     Connection con;
 
-    
     public ClienteDAO() {
-        Connection con = ConexaoUtil.getConnection();
+        con = ConexaoUtil.getConnection();
     }
 
     public void salvar(Cliente cliente) {
 
-        String sql = "INSERT INTO CLIENTE(idcliente,nome,telefone,email) values(?,?,?,?) ";
+        String sql = "INSERT INTO CLIENTE(nome,telefone,email) values(?,?,?) ";
 
         // constroi preparedstatement com o sql
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
-            preparador.setInt(1, cliente.getId());
-            preparador.setString(2, cliente.getNome());
-            preparador.setString(3, cliente.getTelefone());
-            preparador.setString(4, cliente.getEmail());
+
+            preparador.setString(1, cliente.getNome());
+            preparador.setString(2, cliente.getTelefone());
+            preparador.setString(3, cliente.getEmail());
 
             preparador.execute();
             preparador.close();
@@ -44,7 +44,7 @@ public class ClienteDAO {
 
     public Cliente buscarPorId(Integer id) {
 
-        String sql = "SELECT * FROM cliente WHERE id=?";
+        String sql = "SELECT * FROM cliente WHERE idcliente=?";
         try {
 
             //prepara e executa o sql
@@ -55,7 +55,6 @@ public class ClienteDAO {
             ResultSet resultado = preparadorSQL.executeQuery();
             if (resultado.next()) {
 
-                
                 Cliente cli = new Cliente();
 
                 //Atribuindo dados do resultado no objeto cliente
@@ -76,13 +75,13 @@ public class ClienteDAO {
 
     }
 
-    public void excluir(Integer id) {
+    public void excluir(Cliente cliente) {
 
-        String sql = "DELETE FROM cliente WHERE id=?";
+        String sql = "DELETE FROM cliente WHERE idcliente=?";
 
         try {
             PreparedStatement preparadorSQL = con.prepareStatement(sql);
-            preparadorSQL.setInt(1, id);
+            preparadorSQL.setInt(1, cliente.getId());
 
             preparadorSQL.execute();
             preparadorSQL.close();
@@ -92,7 +91,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> buscarTodos() {
-        String sql = "SELECT * FROM cliente ORDER BY id";
+        String sql = "SELECT * FROM cliente ORDER BY idcliente";
         try {
             PreparedStatement preparadorSQL = con.prepareStatement(sql);
 
@@ -104,7 +103,7 @@ public class ClienteDAO {
                 Cliente cli = new Cliente();
 
                 //Atribuindo dados do resultado no objeto cliente
-                cli.setId(resultado.getInt("id"));
+                cli.setId(resultado.getInt("idcliente"));
                 cli.setNome(resultado.getString("nome"));
                 cli.setTelefone(resultado.getString("telefone"));
                 cli.setEmail("email");
@@ -118,6 +117,31 @@ public class ClienteDAO {
 
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
+        }
+
+    }
+
+//    Método que irá alterar os dados
+    public void alterar(Cliente cliente) {
+
+        String sql = "UPDATE CLIENTE SET nome = ?, telefone= ? ,email= ? WHERE idcliente = ? ";
+
+        // constroi preparedstatement com o sql
+        try {
+            PreparedStatement preparador = con.prepareStatement(sql);
+            preparador.setString(1, cliente.getNome());
+            preparador.setString(2, cliente.getTelefone());
+            preparador.setString(3, cliente.getEmail());
+            preparador.setInt(4, cliente.getId());
+
+            preparador.execute();
+            preparador.close();
+
+            System.out.println("Alterado com sucesso ! ");
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
     }
