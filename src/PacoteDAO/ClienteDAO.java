@@ -34,7 +34,7 @@ public class ClienteDAO {
             preparador.execute();
             preparador.close();
 
-                    System.out.println("Cadastrado com sucesso ! ");
+            //        System.out.println("Cadastrado com sucesso ! ");
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -92,13 +92,12 @@ public class ClienteDAO {
 
     public List<Cliente> buscarTodos() {
         String sql = "SELECT * FROM cliente ORDER BY idcliente";
-        List<Cliente> lista = new ArrayList<>();
         try {
             PreparedStatement preparadorSQL = con.prepareStatement(sql);
 
             //Armazenando Resultado da consulta
             ResultSet resultado = preparadorSQL.executeQuery();
-
+            List<Cliente> lista = new ArrayList<>();
             while (resultado.next()) {
                 //Instancia de cliente
                 Cliente cli = new Cliente();
