@@ -1,8 +1,7 @@
 package PacoteDAO;
 
-import PacoteClasses.Cliente;
+import PacoteClasses.Produto;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,30 +10,29 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ClienteDAO {
+public class ProdutoDAO {
 
     Connection con;
 
-    public ClienteDAO() {
+    public ProdutoDAO() {
         con = ConexaoUtil.getConnection();
     }
 
-    public void salvar(Cliente cliente) {
+    public void salvar(Produto produto) {
 
-        String sql = "INSERT INTO CLIENTE(nome,telefone,email) values(?,?,?) ";
+        String sql = "INSERT INTO PRODUTO(descricao,valor) values(?,?) ";
 
         // constroi preparedstatement com o sql
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
 
-            preparador.setString(1, cliente.getNome());
-            preparador.setString(2, cliente.getTelefone());
-            preparador.setString(3, cliente.getEmail());
+            preparador.setString(1, produto.getDescricao());
+            preparador.setString(2, produto.getValor());
 
             preparador.execute();
             preparador.close();
 
-                    System.out.println("Cadastrado com sucesso ! ");
+            System.out.println("Cadastrado com sucesso ! ");
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -42,9 +40,9 @@ public class ClienteDAO {
 
     }
 
-    public Cliente buscarPorId(Integer id) {
+    public Produto buscarPorId(Integer id) {
 
-        String sql = "SELECT * FROM cliente WHERE idcliente=?";
+        String sql = "SELECT * FROM PRODUTO WHERE idproduto=?";
         try {
 
             //prepara e executa o sql
@@ -55,15 +53,15 @@ public class ClienteDAO {
             ResultSet resultado = preparadorSQL.executeQuery();
             if (resultado.next()) {
 
-                Cliente cli = new Cliente();
+                Produto pro = new Produto();
 
                 //Atribuindo dados do resultado no objeto cliente
-                cli.setId(id);
-                cli.setNome(resultado.getString("nome"));
-                cli.setTelefone(resultado.getString("telefone"));
-                cli.setEmail("email");
+                pro.setId(id);
+                pro.setDescricao(resultado.getString("descricao"));
+                pro.setValor(resultado.getString("valor"));
+                
                 preparadorSQL.close();
-                return cli;
+                return pro;
             } else {
                 return null;
             }
@@ -75,13 +73,13 @@ public class ClienteDAO {
 
     }
 
-    public void excluir(Cliente cliente) {
+    public void excluir(Produto produto) {
 
-        String sql = "DELETE FROM cliente WHERE idcliente=?";
+        String sql = "DELETE FROM PRODUTO WHERE idproduto = ?";
 
         try {
             PreparedStatement preparadorSQL = con.prepareStatement(sql);
-            preparadorSQL.setInt(1, cliente.getId());
+            preparadorSQL.setInt(1, produto.getId());
 
             preparadorSQL.execute();
             preparadorSQL.close();
@@ -90,9 +88,9 @@ public class ClienteDAO {
         }
     }
 
-    public List<Cliente> buscarTodos() {
-        String sql = "SELECT * FROM cliente ORDER BY idcliente";
-        List<Cliente> lista = new ArrayList<>();
+    public List<Produto> buscarTodos() {
+        String sql = "SELECT * FROM PRODUTO ORDER BY idproduto";
+        List<Produto> lista = new ArrayList<>();
         try {
             PreparedStatement preparadorSQL = con.prepareStatement(sql);
 
@@ -101,15 +99,15 @@ public class ClienteDAO {
 
             while (resultado.next()) {
                 //Instancia de cliente
-                Cliente cli = new Cliente();
+                Produto pro = new Produto();
 
                 //Atribuindo dados do resultado no objeto cliente
-                cli.setId(resultado.getInt("idcliente"));
-                cli.setNome(resultado.getString("nome"));
-                cli.setTelefone(resultado.getString("telefone"));
-                cli.setEmail("email");
+                pro.setId(resultado.getInt("idproduto"));
+                pro.setDescricao(resultado.getString("descricao"));
+                pro.setValor(resultado.getString("valor"));
+
                 //Adicionando cliente na lista
-                lista.add(cli);
+                lista.add(pro);
             }
 
             preparadorSQL.close();
@@ -123,17 +121,16 @@ public class ClienteDAO {
     }
 
 //    Método que irá alterar os dados
-    public void alterar(Cliente cliente) {
+    public void alterar(Produto produto) {
 
-        String sql = "UPDATE CLIENTE SET nome = ?, telefone= ? ,email= ? WHERE idcliente = ? ";
+        String sql = "UPDATE PRODUTO SET descricao = ?, valor = ? WHERE idproduto = ? ";
 
         // constroi preparedstatement com o sql
         try {
             PreparedStatement preparador = con.prepareStatement(sql);
-            preparador.setString(1, cliente.getNome());
-            preparador.setString(2, cliente.getTelefone());
-            preparador.setString(3, cliente.getEmail());
-            preparador.setInt(4, cliente.getId());
+            preparador.setString(1, produto.getDescricao());
+            preparador.setString(2, produto.getValor());
+            preparador.setInt(3, produto.getId());
 
             preparador.execute();
             preparador.close();
@@ -146,5 +143,4 @@ public class ClienteDAO {
         }
 
     }
-
 }

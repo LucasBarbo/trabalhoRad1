@@ -1,6 +1,8 @@
+
 package PacoteClasses;
 
-class Produto {
+
+public class Produto {
 
     private Integer id;
     private String descricao, valor;
