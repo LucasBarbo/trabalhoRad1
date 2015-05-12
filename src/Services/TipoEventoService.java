@@ -1,39 +1,43 @@
 package Services;
 
+import PacoteClasses.TipoEvento;
+import PacoteDAO.TipoEventoDAO;
 import java.util.List;
 
 /**
  *
  * @author Wil
  */
-/*public class TipoEventoService {
+public class TipoEventoService {
 
-    private TipoEvendoDAO tipoeventoDAO;
+    private TipoEventoDAO tipoeventoDAO;
 
-    public TipoEvento() {
+    public TipoEventoService() {
         tipoeventoDAO = new TipoEventoDAO();
     }
 
-    public void salvar(TipoEventoService tipoeventoservice) throws ServiceException {
+    public void salvar(TipoEvento tipoevento) throws ServiceException {
 
-        if (tipoeventoservice.getId().isEmpty()) {
-            throw new ServiceException(" O campo ID é obrigatorio ");
-        }
-        if (tipoeventoservice.getDescricao().isEmpty()) {
+        if (tipoevento.getDescricao().isEmpty()) {
             throw new ServiceException(" Campo descricao é obrigatorio ");
         }
-        tipoeventoDAO.salvar(tipoeventoservice);
+        tipoeventoDAO.salvar(tipoevento);
+    }
+
+    public void excluir(TipoEvento tipoevento) {
+        tipoeventoDAO.excluir(tipoevento);
+    }
+
+    public List<TipoEvento> buscarTodos() {
+        return tipoeventoDAO.buscarTodos();
     }
 
     public TipoEvento buscarPorId(Integer id) {
         return tipoeventoDAO.buscarPorId(id);
     }
 
-    public TipoEvento excluir(Integer id) {
-        return tipoeventoDAO.excluir(id);
-    }
-    public List<TipoEvento>buscarTodos(){
-        return tipoeventoDAO.buscarTodos();
+    public void alterar(TipoEvento tipoevento) {
+        tipoeventoDAO.alterar(tipoevento);
     }
 
-}*/
+}

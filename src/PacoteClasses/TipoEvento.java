@@ -1,7 +1,7 @@
 package PacoteClasses;
 
 
-class TipoEvento {
+public class TipoEvento {
     
     private Integer id;
     private String descricao;

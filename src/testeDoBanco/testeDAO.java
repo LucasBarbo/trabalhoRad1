@@ -2,8 +2,10 @@ package testeDoBanco;
 
 import PacoteClasses.Cliente;
 import PacoteClasses.Produto;
+import PacoteClasses.TipoEvento;
 import PacoteDAO.ClienteDAO;
 import PacoteDAO.ProdutoDAO;
+import PacoteDAO.TipoEventoDAO;
 import java.util.List;
 
 public class testeDAO {
@@ -16,11 +18,18 @@ public class testeDAO {
 //        testAlterar();
 //        testBuscaPorId();
 //------------------------------------
-//        testSalvarProduto();
-//        testDeletarProduto();
-//        testBuscatodosProduto();
-//        testAlterarProduto();
-        testBuscaPorIdProduto();
+//       testSalvarProduto();
+//       testDeletarProduto();
+//       testBuscatodosProduto();
+//       testAlterarProduto();
+//       testBuscaPorIdProduto();
+//        
+//----------------------------
+//        testSalvarTipoEvento();
+//        testBuscatodosEventos();
+//        testAlterarEvento();
+//        testBuscaPorIdEvento();
+//        testDeletarEvento();
     }
 
     private static void testSalvar() {
@@ -82,7 +91,6 @@ public class testeDAO {
 
         pro.setDescricao("Torta alemã");
         pro.setValor("7.50");
-        
 
         ProdutoDAO proDAO = new ProdutoDAO();
         proDAO.salvar(pro);
@@ -123,8 +131,56 @@ public class testeDAO {
     private static void testBuscaPorIdProduto() {
         ProdutoDAO proDAO = new ProdutoDAO();
         Produto res = proDAO.buscarPorId(3);
-        System.err.println(res.getDescricao() + " " + res.getValor() + " "+ "O id do produto é"+" "+""+ res.getId());
+        System.err.println(res.getDescricao() + " " + res.getValor() + " " + "O id do produto é" + " " + "" + res.getId());
 
+    }
+
+// ------------------------------------------------------------------------------------------------------
+//    Teste TipoEvento
+    private static void testSalvarTipoEvento() {
+        TipoEvento evento = new TipoEvento();
+
+        evento.setDescricao("Baile");
+
+        TipoEventoDAO eventDAO = new TipoEventoDAO();
+        eventDAO.salvar(evento);
+
+    }
+
+    private static void testBuscatodosEventos() {
+
+        TipoEventoDAO eventDAO = new TipoEventoDAO();
+        List<TipoEvento> listaRes = eventDAO.buscarTodos();
+        System.out.print("\n");
+        for (TipoEvento e : listaRes) {
+            System.out.println(e.getDescricao() + " " + " " + e.getId());
+
+        }
+    }
+
+    private static void testDeletarEvento() {
+        TipoEvento event = new TipoEvento();
+
+        event.setId(3);
+
+        TipoEventoDAO eventDAO = new TipoEventoDAO();
+        eventDAO.excluir(event);
+
+    }
+
+    private static void testBuscaPorIdEvento() {
+        TipoEventoDAO eventDAO = new TipoEventoDAO();
+        TipoEvento res = eventDAO.buscarPorId(5);
+        System.err.println("Evento: " + res.getDescricao() + " " + " " + "com id: " + " " + "" + res.getId());
+
+    }
+
+    private static void testAlterarEvento() {
+        TipoEvento event = new TipoEvento();
+        event.setId(8);
+        event.setDescricao("Aniversario");
+        TipoEventoDAO eventDAO = new TipoEventoDAO();
+        eventDAO.alterar(event);
     }
 
 }
