@@ -61,7 +61,7 @@ public class ItemPedidoDAO {
         }
     }
 
-    public ItemPedido buscarPorId(Integer id) {
+    /*public ItemPedido buscarPorId(Integer id) {
 
         String sql = "SELECT * FROM ITEMPEDIDO WHERE iditempedido=?";
         try {
@@ -94,7 +94,7 @@ public class ItemPedidoDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
+    }*/
 
     public List<ItemPedido> buscarTodos() {
 
@@ -131,7 +131,7 @@ public class ItemPedidoDAO {
     }
 
 //    metodo que retorna o valor total da quantidade de produtos escolhido 
-    public ItemPedido valorTotalProdutos(Produto produto) {
+   /* public ItemPedido valorTotalProdutos(Produto produto) {
         String sql = "SELECT valor FROM PRODUTO WHERE idproduto = ? ";
 
         try {
@@ -165,5 +165,5 @@ public class ItemPedidoDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
+    }*/
 }
