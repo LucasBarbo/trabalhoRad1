@@ -38,20 +38,16 @@ public class ItemPedidoService {
         itempedidoDAO.excluir(itempedido);
     }
 
-    public ItemPedido buscarPorId(Integer id) {
-
-        return itempedidoDAO.buscarPorId(id);
-
-    }
+    
 
     public List<ItemPedido> buscarTodos() {
         return itempedidoDAO.buscarTodos();
     }
 
     //retorna o valor total para a tela
-    public ItemPedido valorTotalProdutos(Produto produto) {
+    /*public ItemPedido valorTotalProdutos(Produto produto) {
 
         return itempedidoDAO.valorTotalProdutos(produto);
-    }
+    }*/
 
 }
