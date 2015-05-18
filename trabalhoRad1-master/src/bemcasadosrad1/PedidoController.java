@@ -38,8 +38,10 @@ public class PedidoController implements Initializable {
     
     private static final List<ItemPedido> produtos = new ArrayList<>();
     
+    private  ObservableList<ItemPedido> infoItens;
+    
     @FXML
-    private TextField localContratadoT, cerimonialT, horarioT, qtdProduto;
+    private TextField localContratadoT, cerimonialT, horarioT, qtdProduto, valorProdutoQtd;
     
     @FXML
     private DatePicker dataPeidoT, dataEventoT;
@@ -56,6 +58,8 @@ public class PedidoController implements Initializable {
     @FXML
     private TableColumn colunaValor;
     
+     
+        
     @FXML
     private ComboBox<Cliente> clientesCombo;
     
@@ -64,6 +68,21 @@ public class PedidoController implements Initializable {
     
     @FXML
     private ComboBox<Produto> produtoCombo;
+    
+    @FXML
+    private void produtoEvento(ActionEvent event){
+       double valor =  Double.parseDouble(produtoCombo.getValue().getValor());
+       int qtd = Integer.parseInt(qtdProduto.getText());
+       
+       double result = valor * qtd;
+       
+       // transformo o valor da operação em string para setar no textfild da tela
+       String resultString = String.valueOf(result);
+       
+       
+       valorProdutoQtd.setText(resultString);
+    
+    }
     
     @FXML
     private void adicionar(ActionEvent event) throws ServiceException{
@@ -82,15 +101,30 @@ public class PedidoController implements Initializable {
        
         colunaProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
         colunaValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
-        colunaValor.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colunaQtd.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
        
        ObservableList<ItemPedido> infoItens = FXCollections.observableArrayList(produtos);
        
        tabela.setItems(infoItens);
        
        
+       
+       
     }
     
+   @FXML
+   private void excluir(ActionEvent e){
+       
+
+   
+       tabela.getSelectionModel().getSelectedItem();
+       
+       int idTab = tabela.getSelectionModel().getFocusedIndex();
+       infoItens.remove(idTab);
+       tabela.getSelectionModel().clearSelection(idTab, colunaValor);
+       tabela.getItems().remove(idTab);
+       tabela.setItems(infoItens);
+   }
     
     @FXML
     private void salvarPedido(ActionEvent event) {
