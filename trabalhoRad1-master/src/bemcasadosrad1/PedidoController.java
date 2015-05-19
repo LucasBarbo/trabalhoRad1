@@ -26,7 +26,9 @@ import Services.ServiceException;
 import Services.TipoEventoService;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.binding.Bindings;
 import javafx.scene.control.SelectionMode;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,11 +39,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class PedidoController implements Initializable {
     
     private static final List<ItemPedido> produtos = new ArrayList<>();
-    
+    double s=0;
     private  ObservableList<ItemPedido> infoItens;
     
     @FXML
-    private TextField localContratadoT, cerimonialT, horarioT, qtdProduto, valorProdutoQtd;
+    private TextField localContratadoT, cerimonialT, horarioT, qtdProduto;
+    
+    @FXML
+    private TextField valorTotalProduto;
     
     @FXML
     private DatePicker dataPeidoT, dataEventoT;
@@ -58,6 +63,8 @@ public class PedidoController implements Initializable {
     @FXML
     private TableColumn colunaValor;
     
+    @FXML
+    private TextField valorTotalLista;
      
         
     @FXML
@@ -68,6 +75,10 @@ public class PedidoController implements Initializable {
     
     @FXML
     private ComboBox<Produto> produtoCombo;
+    
+    
+   
+    
     
     @FXML
     private void produtoEvento(ActionEvent event){
@@ -80,12 +91,13 @@ public class PedidoController implements Initializable {
        String resultString = String.valueOf(result);
        
        
-       valorProdutoQtd.setText(resultString);
+       valorTotalProduto.setText(resultString);
     
     }
     
+    
     @FXML
-    private void adicionar(ActionEvent event) throws ServiceException{
+    private void adicionar(ActionEvent event) {
         ItemPedido item = new ItemPedido();
        
         double valor =  Double.parseDouble(produtoCombo.getValue().getValor());
@@ -107,10 +119,20 @@ public class PedidoController implements Initializable {
        
        tabela.setItems(infoItens);
        
+       s = 0;
+       for(ItemPedido i : produtos){
+               s = s + i.getValor();
+            }
+            
+            String soma = String.valueOf(s);
+            valorTotalLista.setText(soma);
+       
        
        
        
     }
+    
+    
     
    @FXML
    private void excluir(ActionEvent e){
@@ -146,11 +168,17 @@ public class PedidoController implements Initializable {
         tipoCombo.setItems(eventos);
         
          //colocando no combo os produtos
-        ProdutoService produtos = new ProdutoService();       
-        ObservableList<Produto> pro = FXCollections.observableArrayList(produtos.buscarTodos());
+        ProdutoService prod = new ProdutoService();       
+        ObservableList<Produto> pro = FXCollections.observableArrayList(prod.buscarTodos());
         produtoCombo.setItems(pro);
         
+        
+        
+        
         tabela.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); 
+         
+            
+    
         
     }    
     
