@@ -1,11 +1,12 @@
+
 package PacoteClasses;
 
 
-public class TipoEvento {
-    
-    private Integer id;
-    private String descricao;
+public class Produto {
 
+    private Integer id;
+    private String descricao,valor;
+     
     public Integer getId() {
         return id;
     }
@@ -21,6 +22,17 @@ public class TipoEvento {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
     
-     
+     @Override
+    public String toString(){
+        return this.getDescricao();
+    }
 }

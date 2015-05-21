@@ -1,6 +1,6 @@
 package PacoteClasses;
 
-class ItemPedido {
+public class ItemPedido {
 
     private Integer id, quantidade;
     private Produto produto;
@@ -46,4 +46,6 @@ class ItemPedido {
     public void setPedido(Pedido Pedido) {
         this.Pedido = Pedido;
     }
+    
+    
 }

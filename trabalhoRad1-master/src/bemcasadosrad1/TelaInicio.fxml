@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="552.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="bemcasadosrad1.TelaInicioController">
+   <children>
+       
+       <Button fx:id="btnPedido" layoutX="399.0" layoutY="412.0" onAction="#btnPedido" prefHeight="39.0" prefWidth="116.0" text="Pedido" />    
+       <Button id="btnCliente" fx:id="" layoutX="103.0" layoutY="412.0" onAction="#btnCliente" prefHeight="39.0" prefWidth="116.0" text="Cliente" />
+   </children> 
+</AnchorPane>

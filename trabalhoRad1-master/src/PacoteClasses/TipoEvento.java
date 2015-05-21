@@ -22,5 +22,9 @@ public class TipoEvento {
         this.descricao = descricao;
     }
     
+    @Override
+    public String toString(){
+        return this.getDescricao();
+    }
      
 }
