@@ -1,25 +1,16 @@
 package PacoteClasses;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class Pedido {
 
     private Integer id;
-    private String origemPedido;
-    private String cerimonial;
-    private String horaEvento;
-    private String indicacao;
-    private String localEvento;
-    private String endereco, obs;
-    private LocalDate dataPedido, dataEvento;
-    private Cliente cliente;
-    private TipoEvendo tipoEvendo;
+    private String origemPedido, cerimonial,horaEvento,indicacao,localEvento,endereco,obs;
+    private Date dataPedido, dataEvento;
+    private Cliente cliente; private TipoEvento tipoEvento;
     private List<ItemPedido> itens;
-    private Integer idCliente;
-    private Integer idevento;
-    private Integer idpedido;
+
     public Integer getId() {
         return id;
     }
@@ -84,19 +75,19 @@ public class Pedido {
         this.obs = obs;
     }
 
-    public LocalDate getDataPedido() {
+    public Date getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(LocalDate dataPedido) {
+    public void setDataPedido(Date dataPedido) {
         this.dataPedido = dataPedido;
     }
 
-    public LocalDate getDataEvento() {
+    public Date getDataEvento() {
         return dataEvento;
     }
 
-    public void setDataEvento(LocalDate dataEvento) {
+    public void setDataEvento(Date dataEvento) {
         this.dataEvento = dataEvento;
     }
 
@@ -108,12 +99,12 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public TipoEvendo getTipoEvento() {
-        return tipoEvendo;
+    public TipoEvento getTipoEvento() {
+        return tipoEvento;
     }
 
-    public void setTipoEvendo(TipoEvendo tipoEvendo) {
-        this.tipoEvendo = tipoEvendo;
+    public void setTipoEvento(TipoEvento tipoEvento) {
+        this.tipoEvento = tipoEvento;
     }
 
     public List<ItemPedido> getItens() {
@@ -123,48 +114,6 @@ public class Pedido {
     public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
     }
-
-    /**
-     * @return the idCliente
-     */
-    public Integer getIdCliente() {
-        return idCliente;
-    }
-
-    /**
-     * @param idCliente the idCliente to set
-     */
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    /**
-     * @return the idevento
-     */
-    public Integer getIdevento() {
-        return idevento;
-    }
-
-    /**
-     * @param idevento the idevento to set
-     */
-    public void setIdevento(Integer idevento) {
-        this.idevento = idevento;
-    }
-
-    /**
-     * @return the idpedido
-     */
-    public Integer getIdpedido() {
-        return idpedido;
-    }
-
-    /**
-     * @param idpedido the idpedido to set
-     */
-    public void setIdpedido(Integer idpedido) {
-        this.idpedido = idpedido;
-    }
     
-
+    
 }
